@@ -8,33 +8,33 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.siteUrl),
   title: {
-    default: `${SITE_CONFIG.businessName} | Quality Timber for Every Project`,
+    default: `${SITE_CONFIG.businessName} | Rooted in Quality`,
     template: `%s | ${SITE_CONFIG.shortName}`,
   },
   description: SITE_CONFIG.description,
   applicationName: SITE_CONFIG.businessName,
   alternates: { canonical: "/" },
   openGraph: {
-    title: `${SITE_CONFIG.businessName} | Quality Timber for Every Project`,
+    title: `${SITE_CONFIG.businessName} | Rooted in Quality`,
     description: SITE_CONFIG.description,
     url: "/",
     siteName: SITE_CONFIG.businessName,
     locale: "en_IN",
     type: "website",
-    images: [{ url: "/images/forest-canopy.jpg", width: 2200, height: 1467, alt: "Sunlight through a green forest canopy" }],
+    images: [{ url: "/images/homeBackground.jpg", width: 2200, height: 1467, alt: "Sivakarthik Timber Depot" }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_CONFIG.businessName,
     description: SITE_CONFIG.description,
-    images: ["/images/forest-canopy.jpg"],
+    images: ["/images/homeBackground.jpg"],
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#17392e",
+  themeColor: "#163d2b",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

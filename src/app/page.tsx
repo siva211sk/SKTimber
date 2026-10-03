@@ -1,10 +1,10 @@
 import { Hero } from "@/components/home/Hero";
-import { AboutSection, ApplicationsSection, CtaSection, CollectionSection, ContactSection, ProductDetailsSections, WhyChooseSection } from "@/components/home/Sections";
+import { AboutSection, WoodCollectionSection, ContactSection } from "@/components/home/Sections";
 import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata({
-  title: "Quality Timber for Every Project",
-  description: "Discover considered timber for construction, interiors and craftsmanship at Siva Karthik Timber Depot. Explore our wood collection and enquire today.",
+  title: "Sivakarthik Timber Depot | Rooted in Quality",
+  description: "Sivakarthik Timber Depot supplies premium teakwood for builders, architects and carpenters. Enquire for timber requirements.",
   path: "/",
 });
 
@@ -13,11 +13,7 @@ export default function HomePage() {
     <>
       <Hero />
       <AboutSection />
-      <CollectionSection />
-      <ProductDetailsSections />
-      <ApplicationsSection />
-      <WhyChooseSection />
-      <CtaSection />
+      <WoodCollectionSection />
       <ContactSection />
     </>
   );

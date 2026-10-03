@@ -1,43 +1,58 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu } from "lucide-react";
-import { SITE_CONFIG } from "@/data/site-config";
+import { useState } from "react";
 
 const links = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Wood collection", href: "#collection" },
-  { label: "Applications", href: "#applications" },
-  { label: "Contact", href: "#contact" },
+  { label: "About Us", href: "#about" },
+  { label: "Wood Collection", href: "#woods" },
+  { label: "Contact Us", href: "#contact" },
 ];
 
 export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="site-header">
-      <div className="header-inner">
-        <Link className="brand" href="#home" aria-label={`${SITE_CONFIG.businessName} home`}>
+    <header>
+      <div className="container nav">
+        <Link className="brand-logo" href="#home">
           <Image
-            className="brand-logo"
-            src="/svg/logo.svg"
-            alt={`${SITE_CONFIG.businessName} logo`}
-            width={100}
-            height={26}
+            src="/images/logo.jpeg"
+            alt="Sivakarthik Timber Depot"
+            width={200}
+            height={72}
             priority
+            style={{ height: "100%", width: "auto", objectFit: "contain" }}
           />
         </Link>
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+        <nav
+          className={`links${menuOpen ? " open" : ""}`}
+          id="navLinks"
+          aria-label="Main navigation"
+        >
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
-        <Link className="header-cta" href="#enquiry">
-          Get a quote <ArrowUpRight size={15} />
+        <Link className="nav-cta" href="#contact">
+          GET A QUOTE ↗
         </Link>
-        <details className="mobile-menu">
-          <summary aria-label="Open navigation menu"><Menu size={22} /></summary>
-          <nav aria-label="Mobile navigation">
-            {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
-            <Link className="mobile-quote" href="#enquiry">Get a quote <ArrowUpRight size={15} /></Link>
-          </nav>
-        </details>
+        <button
+          className="mobile-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
       </div>
     </header>
   );

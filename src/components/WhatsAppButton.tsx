@@ -1,23 +1,22 @@
-import { MessageCircle } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site-config";
 
 export function WhatsAppButton() {
   const digits = SITE_CONFIG.contact.whatsappNumber.replace(/\D/g, "");
   const href = digits
-    ? `https://wa.me/${digits}?text=${encodeURIComponent(`Hello ${SITE_CONFIG.businessName}, I would like to make an enquiry.`)}`
-    : "#enquiry";
+    ? `https://wa.me/${digits}?text=${encodeURIComponent("Hello, I would like to enquire about your timber.")}`
+    : "#contact";
 
   return (
     <a
-      className="whatsapp-float"
+      className="floating-wa"
+      id="floatingWhatsApp"
       href={href}
-      aria-label={digits ? "Chat with us on WhatsApp" : "Make an enquiry"}
-      title={digits ? "Chat with us on WhatsApp" : "WhatsApp number to be configured"}
+      aria-label="Enquire on WhatsApp"
+      title="WhatsApp enquiry"
       target={digits ? "_blank" : undefined}
-      rel={digits ? "noreferrer" : undefined}
+      rel={digits ? "noopener noreferrer" : undefined}
     >
-      <MessageCircle size={22} strokeWidth={2} />
-      <span>{digits ? "Chat with us" : "Make an enquiry"}</span>
+      ✆
     </a>
   );
 }

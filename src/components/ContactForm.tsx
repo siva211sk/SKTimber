@@ -1,80 +1,125 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowUpRight, Check } from "lucide-react";
-import { PRODUCTS } from "@/data/products";
 import { SITE_CONFIG } from "@/data/site-config";
 
 export function ContactForm() {
-  const [feedback, setFeedback] = useState("");
+  const [formStatus, setFormStatus] = useState(
+    "No information is stored on this server. Direct WhatsApp & Email transfer."
+  );
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    if (!form.reportValidity()) return;
-
     const values = new FormData(form);
     const name = String(values.get("name") ?? "").trim();
     const phone = String(values.get("phone") ?? "").trim();
-    const product = String(values.get("product") ?? "Not sure yet");
-    const message = String(values.get("message") ?? "").trim();
-    const phoneDigits = phone.replace(/\D/g, "");
 
-    if (name.length < 2 || phoneDigits.length < 7) {
-      setFeedback("Please enter your name and a valid phone number.");
+    if (!name || !phone) {
+      setFormStatus("Please enter your name and phone number.");
       return;
     }
+
+    const roleVal = String(values.get("role") ?? "").trim() || "N/A";
+    const requirements = String(values.get("requirements") ?? "").trim() || "Please contact me to discuss.";
+
+    const msg = `Hello ${SITE_CONFIG.businessName},\n\nI would like to enquire about timber.\nName: ${name}\nPhone: ${phone}\nI am a: ${roleVal}\nRequirements: ${requirements}`;
 
     const digits = SITE_CONFIG.contact.whatsappNumber.replace(/\D/g, "");
-    if (!digits) {
-      setFeedback("WhatsApp is not configured yet. Please use the phone or email details listed here.");
-      return;
+
+    if (digits) {
+      window.open(
+        `https://wa.me/${digits}?text=${encodeURIComponent(msg)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+      setFormStatus(
+        "Your WhatsApp enquiry has been prepared. Please press Send in WhatsApp."
+      );
+    } else if (SITE_CONFIG.contact.email) {
+      window.location.href = `mailto:${SITE_CONFIG.contact.email}?subject=${encodeURIComponent("Timber enquiry from " + name)}&body=${encodeURIComponent(msg)}`;
+      setFormStatus(
+        "Your email app should open with the prepared enquiry. Please send it there."
+      );
     }
-
-    const enquiry = [
-      `Hello ${SITE_CONFIG.businessName},`,
-      `My name is ${name}.`,
-      `Phone: ${phone}`,
-      `Product interest: ${product}`,
-      `Message: ${message || "I'd like to discuss a timber enquiry."}`,
-    ].join("\n");
-
-    window.location.href = `https://wa.me/${digits}?text=${encodeURIComponent(enquiry)}`;
   }
 
   return (
-    <form className="contact-form" id="enquiry" onSubmit={handleSubmit}>
-      <div className="form-heading">
-        <p className="eyebrow">Tell us about your project</p>
-        <h2>Let&apos;s find the right timber.</h2>
+    <form className="contact-form" id="enquiryForm" onSubmit={handleSubmit}>
+      <h3>Request an Enquiry</h3>
+      <p className="form-subtitle">
+        Fill in the details below. We will get back to you as soon as possible.
+      </p>
+      <div className="fields">
+        <div className="field">
+          <label htmlFor="customerName">Your name *</label>
+          <input
+            id="customerName"
+            name="name"
+            required
+            placeholder="Full name"
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="customerPhone">Phone number *</label>
+          <input
+            id="customerPhone"
+            name="phone"
+            required
+            inputMode="tel"
+            placeholder="+91 00000 00000"
+          />
+        </div>
       </div>
-      <div className="form-grid">
-        <label>
-          <span>Your name <b>*</b></span>
-          <input autoComplete="name" name="name" placeholder="How should we address you?" minLength={2} required />
-        </label>
-        <label>
-          <span>Phone number <b>*</b></span>
-          <input autoComplete="tel" name="phone" type="tel" inputMode="tel" pattern="[0-9+().\s-]{7,20}" placeholder="+91 00000 00000" required />
-        </label>
-        <label className="form-full">
-          <span>Product interest</span>
-          <select name="product" defaultValue="">
-            <option value="">Choose a wood type</option>
-            {PRODUCTS.map((product) => <option value={product.name} key={product.slug}>{product.name}</option>)}
-            <option value="General timber enquiry">General timber enquiry</option>
-          </select>
-        </label>
-        <label className="form-full">
-          <span>Project details</span>
-          <textarea name="message" rows={4} placeholder="Share a little about what you are planning..." />
-        </label>
+      <div className="field">
+        <label htmlFor="customerRole">I am a</label>
+        <input
+          id="customerRole"
+          name="role"
+          placeholder="e.g. Builder, Architect, Carpenter, Homeowner"
+        />
       </div>
-      <div className="form-footer">
-        <p><Check size={14} /> Your enquiry opens in WhatsApp. Nothing is stored on this website.</p>
-        <button className="button button-dark" type="submit">Send enquiry <ArrowUpRight size={16} /></button>
+      <div className="field">
+        <label htmlFor="requirements">Your requirements</label>
+        <textarea
+          id="requirements"
+          name="requirements"
+          rows={6}
+          placeholder="Dimensions, quantity, delivery location or any specific timber questions..."
+        />
       </div>
-      {feedback && <p className="form-feedback" role="status">{feedback}</p>}
+      <button className="btn submit" type="submit">
+        <span>PREPARE ENQUIRY</span>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </button>
+      <p className="form-note" id="formStatus" role="status">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        <span>{formStatus}</span>
+      </p>
     </form>
   );
 }

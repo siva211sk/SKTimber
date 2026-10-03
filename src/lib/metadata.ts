@@ -20,13 +20,13 @@ export function createPageMetadata({
       url: path,
       siteName: SITE_CONFIG.businessName,
       type: "website",
-      images: [{ url: "/images/forest-canopy.jpg", width: 2200, height: 1467, alt: "Sunlight through a green forest canopy" }],
+      images: [{ url: "/images/homeBackground.jpg", width: 2200, height: 1467, alt: "Sivakarthik Timber Depot" }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/forest-canopy.jpg"],
+      images: ["/images/homeBackground.jpg"],
     },
   };
 }
