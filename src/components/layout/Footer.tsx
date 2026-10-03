@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { SITE_CONFIG } from "@/data/site-config";
 
 export function Footer() {
@@ -8,13 +7,11 @@ export function Footer() {
     <footer>
       <div className="container">
         <div>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/images/logo.jpeg"
             alt="Sivakarthik Timber Depot"
-            width={150}
-            height={25}
-            priority
-            style={{ height: "auto", width: "auto", objectFit: "contain" }}
+            style={{ height: "40px", width: "auto", objectFit: "contain" }}
           />
         </div>
         <div>

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -18,12 +17,10 @@ export function Header() {
     <header>
       <div className="container nav">
         <Link className="brand-logo" href="#home">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/images/logo.jpeg"
             alt="Sivakarthik Timber Depot"
-            width={200}
-            height={72}
-            priority
             style={{ height: "100%", width: "auto", objectFit: "contain" }}
           />
         </Link>
