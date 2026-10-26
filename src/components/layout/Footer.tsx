@@ -7,12 +7,13 @@ export function Footer() {
     <footer>
       <div className="container">
         <div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo.jpeg"
-            alt="Sivakarthik Timber Depot"
-            style={{ height: "40px", width: "auto", objectFit: "contain" }}
-          />
+          <strong style={{ fontSize: "20px", color: "var(--ink)" }}>
+            Sivakarthik Timber Depot
+          </strong>
+          <br />
+          <span style={{ fontSize: "10px", letterSpacing: "2px" }}>
+            TIMBER SUPPLIER QUALITY
+          </span>
         </div>
         <div>
           © <span>{new Date().getFullYear()}</span>{" "}

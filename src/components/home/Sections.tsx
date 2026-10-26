@@ -1,7 +1,17 @@
+"use client";
+
 import Image from "next/image";
-import { PRODUCTS } from "@/data/products";
+import { useState } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { SITE_CONFIG } from "@/data/site-config";
+
+const WOODS = [
+  { name: "Palash Wood", sub: "Balasha", img: "/images/ballarsha.jpeg" },
+  { name: "Teak Wood", sub: "Sagwan", img: "/images/teak.jpeg" },
+  { name: "Neem Wood", sub: "Vepa", img: "/images/neam.jpeg" },
+  { name: "Jamun Wood", sub: "Neredu", img: "/images/jamun.jpeg" },
+  { name: "Babuca Wood", sub: "Thumma", img: "/images/babuca.jpeg" },
+];
 
 export function AboutSection() {
   return (
@@ -10,14 +20,23 @@ export function AboutSection() {
         <div className="about-text">
           <div
             className="section-label"
-            style={{ color: "rgb(183, 120, 2)", fontSize: "2.5rem" }}
+            style={{ color: "rgb(183, 120, 2)", fontSize: "1rem" }}
           >
             About Us
           </div>
           <p>
-            <span style={{ fontSize: "22px", color: "#000000ff" }}>
+            <span
+              style={{
+                fontSize: "2.5rem",
+                fontWeight: "bold",
+                lineHeight: 1.2,
+                color: "rgb(36, 24, 24)",
+              }}
+            >
               Since 2010, quality has never been a compromise.
-            </span>{" "}
+            </span>
+            <br />
+            <br />
             Siva Karthik Timber Depot was founded in 2010 by M.S. Giri, built
             on quality, trust, and value. That promise has carried us for over a
             decade, earning the trust of thousands of customers across Andhra
@@ -36,7 +55,12 @@ export function AboutSection() {
             and they&apos;re what will carry it forward, nationwide.
           </p>
         </div>
-        <div className="about-image">
+        <div className="about-image-col">
+          <div className="about-values-row">
+            <span className="about-value-pill">Quality</span>
+            <span className="about-value-pill">Trust</span>
+            <span className="about-value-pill">Value</span>
+          </div>
           <Image
             src="/images/about.png"
             alt="About Sivakarthik Timber Depot"
@@ -48,56 +72,15 @@ export function AboutSection() {
       </div>
       <div className="about-footer">
         <div className="container">
-          <span className="about-footer-item">
-            <span className="icon-badge">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-            </span>
-            2010 Founded
+          <span className="stat-item">
+            <span className="stat-num">2010</span> Founded
           </span>
-          <span className="about-footer-item">
-            <span className="icon-badge">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-            </span>
-            13+ year Of trusted quality
+          <span className="stat-sep">◇───◇───◇</span>
+          <span className="stat-item">
+            <span className="stat-num">13+</span> Years Of Trusted Quality
           </span>
-          <span className="about-footer-item">
-            <span className="icon-badge">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </span>
-            Founded by M. Sesha Giri
-          </span>
+          <span className="stat-sep">◇───◇───◇</span>
+          <span className="stat-item">Founded by M. Sesha Giri</span>
         </div>
       </div>
     </section>
@@ -105,71 +88,66 @@ export function AboutSection() {
 }
 
 export function WoodCollectionSection() {
-  const row1 = PRODUCTS.slice(0, 3);
-  const row2 = PRODUCTS.slice(3, 5);
+  const [active, setActive] = useState(0);
 
   return (
-    <section
-      className="section"
-      id="woods"
-      style={{ backgroundColor: "#581825", color: "#ffffff" }}
-    >
-      <div className="container">
-        <div className="section-head" style={{ display: "block" }}>
-          <div
-            className="section-label"
-            style={{ color: "rgb(255, 255, 255)", fontSize: "2.5rem" }}
-          >
-            Wood collection
+    <section id="woods">
+      <div className="wc-layout">
+        {/* LEFT: header + card list */}
+        <div className="wc-left">
+          <div className="wc-header">
+            <div className="wc-label">Wood Collection</div>
+            <p className="wc-desc">
+              Explore our carefully sourced timber collection, built for lasting
+              space.
+            </p>
           </div>
-          <p
-            style={{
-              fontSize: "1.5rem",
-              marginTop: "40px",
-              textAlign: "center",
-              color: "#ffffff",
-            }}
-          >
-            &quot;Timber we are specialized in&quot;
-          </p>
+          <div className="wc-cards">
+            {WOODS.map((wood, i) => (
+              <div
+                key={i}
+                className={`wc-card${active === i ? " active" : ""}`}
+                data-wood={i}
+                onClick={() => setActive(i)}
+              >
+                <span className="wc-card-num">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="wc-card-text">
+                  <strong>{wood.name}</strong>
+                  <em>{wood.sub}</em>
+                </div>
+                <span className="wc-card-arrow">→</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="wood-grid">
-          <div className="wood-row1">
-            {row1.map((product) => (
-              <div key={product.slug}>
-                <article className="wood-card">
-                  <div className="wood-info">
-                    <p>{product.name}</p>
-                    <br />
-                    <span className="wood-spec-label">Specifications:</span>
-                    <ul>
-                      {product.specs.map((spec, i) => (
-                        <li key={i}>{spec}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </div>
-            ))}
-          </div>
-          <div className="wood-row2">
-            {row2.map((product) => (
-              <div key={product.slug}>
-                <article className="wood-card">
-                  <div className="wood-info">
-                    <p>{product.name}</p>
-                    <br />
-                    <span className="wood-spec-label">Specifications:</span>
-                    <ul>
-                      {product.specs.map((spec, i) => (
-                        <li key={i}>{spec}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </div>
-            ))}
-          </div>
+
+        {/* RIGHT: 5 image slots */}
+        <div className="wc-right">
+          {WOODS.map((wood, i) => (
+            <div
+              key={i}
+              className={`wc-img-wrap${active === i ? " active" : ""}`}
+              data-wood={i}
+              onClick={() => setActive(i)}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={wood.img}
+                alt={`${wood.name} — ${wood.sub}`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <span className="wc-img-badge">
+                {wood.name} — {wood.sub}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -183,7 +161,7 @@ export function ContactSection() {
     <section className="section" id="contact">
       <div className="container contact-layout">
         <div>
-          <div className="section-label" style={{ fontSize: "4rem" }}>
+          <div className="section-label" style={{ fontSize: "2.5rem" }}>
             Contact Us
           </div>
           <div className="contact-detail">
@@ -200,7 +178,7 @@ export function ContactSection() {
                 style={{
                   verticalAlign: "-2px",
                   marginRight: "6px",
-                  color: "#678064",
+                  color: "#823919",
                 }}
               >
                 <path d="M3 21h18" />
@@ -214,7 +192,7 @@ export function ContactSection() {
               </svg>
               Business
             </b>
-            {SITE_CONFIG.businessName}
+            Sivakarthik Timber Depot
           </div>
           <div className="contact-detail">
             <b>
@@ -230,22 +208,23 @@ export function ContactSection() {
                 style={{
                   verticalAlign: "-2px",
                   marginRight: "6px",
-                  color: "#678064",
+                  color: "#823919",
                 }}
               >
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
               Phone / WhatsApp
             </b>
-            <div style={{ marginTop: "6px", lineHeight: "1.7", color: "#526158" }}>
+            <div style={{ marginTop: "6px", lineHeight: "1.7", color: "#000" }}>
               {contact.contacts.map((c, i) => (
                 <div key={i}>
-                  <strong>{i + 1}. {c.name}:</strong>{" "}
+                  <strong>
+                    {i + 1}. {c.name}:
+                  </strong>{" "}
                   <a
                     href={c.phoneHref}
-                    className="contact-link"
                     style={{
-                      color: "#294c36",
+                      color: "#000",
                       fontWeight: 600,
                       textDecoration: "underline",
                     }}
@@ -270,7 +249,7 @@ export function ContactSection() {
                 style={{
                   verticalAlign: "-2px",
                   marginRight: "6px",
-                  color: "#678064",
+                  color: "#823919",
                 }}
               >
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -282,7 +261,7 @@ export function ContactSection() {
               <a
                 href={contact.emailHref}
                 style={{
-                  color: "#294c36",
+                  color: "#000",
                   fontWeight: 600,
                   textDecoration: "underline",
                 }}
@@ -305,7 +284,7 @@ export function ContactSection() {
                 style={{
                   verticalAlign: "-2px",
                   marginRight: "6px",
-                  color: "#678064",
+                  color: "#823919",
                 }}
               >
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -318,7 +297,7 @@ export function ContactSection() {
                 display: "block",
                 marginTop: "4px",
                 lineHeight: "1.6",
-                color: "#526158",
+                color: "#000",
               }}
             >
               S.No. 185, Renigunta Rd, Korramenugunta,
@@ -340,7 +319,7 @@ export function ContactSection() {
                 style={{
                   verticalAlign: "-2px",
                   marginRight: "6px",
-                  color: "#678064",
+                  color: "#823919",
                 }}
               >
                 <polygon points="3 11 22 2 13 21 11 13 3 11" />
@@ -363,7 +342,13 @@ export function ContactSection() {
               href={contact.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="maps-link"
+              style={{
+                display: "inline-block",
+                marginTop: "8px",
+                fontSize: "13px",
+                color: "#b77802",
+                fontWeight: 600,
+              }}
             >
               Open in Google Maps ↗
             </a>
