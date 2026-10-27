@@ -1,18 +1,7 @@
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
 import { Hero } from "@/components/home/Hero";
 import { AboutSection, ContactSection } from "@/components/home/Sections";
+import { WoodCollectionSection } from "@/components/home/WoodCollection";
 import { createPageMetadata } from "@/lib/metadata";
-
-/* Lazy-load the interactive Wood Collection — it's below the fold and ships
-   useState / onClick handlers that don't need to be in the initial bundle. */
-const WoodCollectionSection = dynamic(
-  () =>
-    import("@/components/home/WoodCollection").then(
-      (mod) => mod.WoodCollectionSection
-    ),
-  { ssr: true }
-);
 
 export const metadata = createPageMetadata({
   title: "Sivakarthik Timber Depot | Rooted in Quality",
@@ -26,9 +15,7 @@ export default function HomePage() {
     <>
       <Hero />
       <AboutSection />
-      <Suspense>
-        <WoodCollectionSection />
-      </Suspense>
+      <WoodCollectionSection />
       <ContactSection />
     </>
   );
