@@ -1,17 +1,6 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 import { ContactForm } from "@/components/ContactForm";
 import { SITE_CONFIG } from "@/data/site-config";
-
-const WOODS = [
-  { name: "Palash Wood", sub: "Balasha", img: "/images/ballarsha.jpeg" },
-  { name: "Teak Wood", sub: "Sagwan", img: "/images/teak.jpeg" },
-  { name: "Neem Wood", sub: "Vepa", img: "/images/neam.jpeg" },
-  { name: "Jamun Wood", sub: "Neredu", img: "/images/jamun.jpeg" },
-  { name: "Babuca Wood", sub: "Thumma", img: "/images/babuca.jpeg" },
-];
 
 export function AboutSection() {
   return (
@@ -66,6 +55,9 @@ export function AboutSection() {
             alt="About Sivakarthik Timber Depot"
             width={560}
             height={560}
+            loading="lazy"
+            quality={65}
+            sizes="(max-width: 650px) 100vw, 35rem"
             style={{ width: "35rem", maxWidth: "100%", height: "auto" }}
           />
         </div>
@@ -81,73 +73,6 @@ export function AboutSection() {
           </span>
           <span className="stat-sep">◇───◇───◇</span>
           <span className="stat-item">Founded by M. Sesha Giri</span>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function WoodCollectionSection() {
-  const [active, setActive] = useState(0);
-
-  return (
-    <section id="woods">
-      <div className="wc-layout">
-        {/* LEFT: header + card list */}
-        <div className="wc-left">
-          <div className="wc-header">
-            <div className="wc-label">Wood Collection</div>
-            <p className="wc-desc">
-              Explore our carefully sourced timber collection, built for lasting
-              space.
-            </p>
-          </div>
-          <div className="wc-cards">
-            {WOODS.map((wood, i) => (
-              <div
-                key={i}
-                className={`wc-card${active === i ? " active" : ""}`}
-                data-wood={i}
-                onClick={() => setActive(i)}
-              >
-                <span className="wc-card-num">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="wc-card-text">
-                  <strong>{wood.name}</strong>
-                  <em>{wood.sub}</em>
-                </div>
-                <span className="wc-card-arrow">→</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT: 5 image slots */}
-        <div className="wc-right">
-          {WOODS.map((wood, i) => (
-            <div
-              key={i}
-              className={`wc-img-wrap${active === i ? " active" : ""}`}
-              data-wood={i}
-              onClick={() => setActive(i)}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={wood.img}
-                alt={`${wood.name} — ${wood.sub}`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
-              <span className="wc-img-badge">
-                {wood.name} — {wood.sub}
-              </span>
-            </div>
-          ))}
         </div>
       </div>
     </section>

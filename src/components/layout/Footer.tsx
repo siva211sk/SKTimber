@@ -1,8 +1,8 @@
-"use client";
-
 import { SITE_CONFIG } from "@/data/site-config";
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer>
       <div className="container">
@@ -16,8 +16,7 @@ export function Footer() {
           </span>
         </div>
         <div>
-          © <span>{new Date().getFullYear()}</span>{" "}
-          {SITE_CONFIG.businessName}. All rights reserved.
+          © <span>{year}</span> {SITE_CONFIG.businessName}. All rights reserved.
         </div>
         <a href="#home">BACK TO TOP ↑</a>
       </div>

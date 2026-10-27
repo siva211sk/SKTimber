@@ -47,6 +47,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="en">
+      <head>
+        {/* Preconnect to font CDN for faster font fetch */}
+        <link rel="preconnect" href="https://db.onlinewebfonts.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://db.onlinewebfonts.com" />
+        {/* Preconnect to Google Maps for iframe */}
+        <link rel="preconnect" href="https://maps.google.com" crossOrigin="anonymous" />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <Header />

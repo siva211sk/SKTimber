@@ -1,4 +1,11 @@
-@import url('https://db.onlinewebfonts.com/c/1d1bda3a3a94d944ba082846aeec5039?family=Naveid+Arabic+DEMO');
+/* Naveid Arabic DEMO — loaded async via layout.tsx <link>, not @import */
+@font-face {
+  font-family: 'Naveid Arabic DEMO';
+  src: url('https://db.onlinewebfonts.com/c/1d1bda3a3a94d944ba082846aeec5039?family=Naveid+Arabic+DEMO') format('woff2');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
 
 :root {
   --forest: #163d2b;
@@ -17,6 +24,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -107,7 +116,7 @@ header {
   font-weight: 700;
   letter-spacing: 1.3px;
   text-transform: uppercase;
-  transition: 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .nav-cta {
@@ -424,7 +433,8 @@ header {
   cursor: pointer;
   background: #fff;
   box-shadow: 0 2px 8px rgba(130, 57, 25, 0.05);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s, transform 0.25s;
+  transform: translateZ(0);
   user-select: none;
 }
 
@@ -538,6 +548,8 @@ header {
   cursor: pointer;
   opacity: 0.72;
   transition: border-color 0.25s, box-shadow 0.25s, opacity 0.25s, transform 0.25s;
+  transform: translateZ(0);
+  contain: layout paint;
 }
 
 .wc-img-wrap:hover {
@@ -565,9 +577,8 @@ header {
   text-transform: uppercase;
   background: rgba(0, 0, 0, 0.4);
   color: #fff;
-  backdrop-filter: blur(6px);
   pointer-events: none;
-  transition: background 0.25s;
+  transition: background-color 0.25s;
 }
 
 .wc-img-wrap.active .wc-img-badge {
@@ -782,7 +793,7 @@ header {
   color: var(--ink);
   font-size: 14px;
   font-family: inherit;
-  transition: all 0.2s ease-in-out;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
@@ -833,7 +844,7 @@ header {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s;
   box-shadow: 0 6px 20px rgba(41, 76, 54, 0.18);
   margin-top: 10px;
 }
@@ -895,6 +906,7 @@ footer a {
   box-shadow: 0 7px 25px #0003;
   font-size: 26px;
   transition: transform 0.2s;
+  transform: translateZ(0);
 }
 
 .floating-wa:hover {
