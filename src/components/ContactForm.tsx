@@ -89,7 +89,7 @@ export function ContactForm() {
         />
       </div>
       <button className="btn submit" type="submit">
-        <span>SEND ENQUIRY</span>
+        <span>SEND AN ENQUIRY</span>
         <svg
           width="16"
           height="16"
