@@ -593,26 +593,44 @@ section.about {
   background: #823919;
 }
 
+/* ────────────────────────────────
+   Tablet: wood collection stacks
+──────────────────────────────── */
 @media (max-width: 860px) {
   .wc-layout {
     grid-template-columns: 1fr;
   }
 
-  .wc-right {
-    height: auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: unset;
-    margin-left: 0;
-    margin-top: 2rem;
+  .wc-header {
+    padding: 24px 20px;
   }
 
-  .wc-img-wrap:nth-child(1),
-  .wc-img-wrap:nth-child(2),
-  .wc-img-wrap:nth-child(3),
-  .wc-img-wrap:nth-child(4),
-  .wc-img-wrap:nth-child(5) {
-    grid-column: span 1;
-    min-height: 150px;
+  .wc-label {
+    font-size: 2.2rem;
+  }
+
+  /* Show only the active image — hide all others */
+  .wc-right {
+    display: block;
+    margin-left: 0;
+    margin-top: 1.5rem;
+  }
+
+  .wc-img-wrap {
+    display: none;
+    width: 100%;
+    height: 260px;
+    border-radius: 14px;
+    min-height: unset;
+    grid-column: unset !important;
+  }
+
+  .wc-img-wrap.active {
+    display: block;
+    opacity: 1;
+    transform: none;
+    border: 2px solid #823919;
+    box-shadow: 0 8px 28px rgba(130, 57, 25, 0.2);
   }
 }
 
@@ -932,7 +950,27 @@ footer a {
   cursor: pointer;
 }
 
-/* ─── Responsive ─── */
+/* ────────────────────────────────
+   Tablet: 1024px
+──────────────────────────────── */
+@media (max-width: 1024px) {
+  .about-layout {
+    gap: 6%;
+  }
+
+  .contact-layout {
+    gap: 6%;
+  }
+
+  .wc-right {
+    margin-left: 1rem;
+    margin-top: 4rem;
+  }
+}
+
+/* ────────────────────────────────
+   Tablet: 850px (nav collapse)
+──────────────────────────────── */
 @media (max-width: 850px) {
   .links {
     gap: 17px;
@@ -942,22 +980,45 @@ footer a {
     display: none;
   }
 
-  .about-layout,
+  /* About: stack text over image */
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .about-image-col {
+    order: -1;
+  }
+
+  .about-image-col img {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .about-values-row {
+    justify-content: flex-start;
+  }
+
+  /* Contact: stack */
   .contact-layout {
-    gap: 35px;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
+/* ────────────────────────────────
+   Mobile: 650px
+──────────────────────────────── */
 @media (max-width: 650px) {
   .container {
     width: min(100% - 32px, 1180px);
   }
 
+  /* ── Header ── */
   .nav {
     height: 72px;
   }
 
-  /* Reduce scroll offset to match shorter mobile header */
   #home,
   #about,
   #woods,
@@ -966,7 +1027,7 @@ footer a {
   }
 
   .brand-logo {
-    height: 3.5rem;
+    height: 3rem;
   }
 
   .mobile-toggle {
@@ -985,6 +1046,7 @@ footer a {
     align-items: stretch;
     gap: 0;
     color: #fff;
+    z-index: 20;
   }
 
   .links.open {
@@ -992,58 +1054,176 @@ footer a {
   }
 
   .links a {
-    padding: 13px 0;
+    padding: 14px 0;
     border-bottom: 1px solid #ffffff24;
+    font-size: 15px;
   }
 
+  /* ── Hero ── */
   .hero,
   .hero-inner {
-    min-height: 690px;
+    min-height: 600px;
   }
 
   .hero-inner {
-    padding-top: 115px;
-    padding-bottom: 115px;
+    padding-top: 100px;
+    padding-bottom: 80px;
   }
 
   .hero h1 {
-    font-size: 52px;
+    font-size: clamp(36px, 11vw, 52px);
+    letter-spacing: -1px;
   }
 
   .hero p {
     font-size: 14px;
   }
 
-  .about-footer .container {
-    font-size: 9px;
-    gap: 8px;
-    flex-wrap: wrap;
+  .hero-values {
+    gap: 16px;
+    font-size: 13px;
   }
 
+  .actions {
+    margin-top: 24px;
+  }
+
+  /* ── About ── */
   .section {
-    padding: 75px 0;
+    padding: 60px 0;
   }
 
-  .about-layout,
-  .contact-layout,
-  .fields {
+  .about-layout {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-image-col {
+    order: -1;
   }
 
   .about-image-col img {
     width: 100%;
+    max-width: 100%;
+  }
+
+  .about-values-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .about-value-pill {
+    font-size: 11px;
+    padding: 8px 16px;
+    letter-spacing: 1.2px;
+  }
+
+  .about-text p {
+    font-size: 14px;
+  }
+
+  .about-footer .container {
+    font-size: 9px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .about-footer .stat-item {
+    padding: 0 12px;
+  }
+
+  .about-footer .stat-sep {
+    display: none;
+  }
+
+  /* ── Wood Collection ── */
+  #woods {
+    padding: 50px 0;
+  }
+
+  .wc-layout {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .wc-label {
+    font-size: 1.8rem;
+  }
+
+  .wc-header {
+    padding: 16px 0;
+  }
+
+  .wc-card {
+    padding: 14px 16px;
+  }
+
+  .wc-card-text strong {
+    font-size: 14px;
+  }
+
+  /* ── Contact ── */
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .fields {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-form {
+    padding: 24px 20px;
+  }
+
+  .contact-form h3 {
+    font-size: 22px;
   }
 
   .section-head {
     display: block;
   }
 
-  .contact-form {
-    padding: 24px;
-  }
-
+  /* ── Footer ── */
   footer .container {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+
+  /* ── WhatsApp ── */
+  .floating-wa {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* ────────────────────────────────
+   Small mobile: 420px
+──────────────────────────────── */
+@media (max-width: 420px) {
+  .hero h1 {
+    font-size: 34px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-since {
+    font-size: 12px;
+  }
+
+  .about-value-pill {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+
+  .contact-form {
+    padding: 20px 16px;
   }
 }
