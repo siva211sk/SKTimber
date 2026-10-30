@@ -12,7 +12,7 @@ export function Footer() {
           </strong>
           <br />
           <span style={{ fontSize: "10px", letterSpacing: "2px" }}>
-            TIMBER SUPPLIER QUALITY
+            Quality Trust and Value
           </span>
         </div>
         <div>
