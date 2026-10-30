@@ -230,7 +230,7 @@ header {
 }
 
 /* ─── About ─── */
-.about {
+section.about {
   background: #f6f7f6;
   padding-top: 50px;
   padding-bottom: 0;
@@ -343,6 +343,14 @@ header {
 /* ─── Section common ─── */
 .section {
   padding: 105px 0;
+}
+
+/* Offset anchor scroll targets below the sticky header (84px desktop) */
+#home,
+#about,
+#woods,
+#contact {
+  scroll-margin-top: 84px;
 }
 
 .section-label {
@@ -947,6 +955,14 @@ footer a {
 
   .nav {
     height: 72px;
+  }
+
+  /* Reduce scroll offset to match shorter mobile header */
+  #home,
+  #about,
+  #woods,
+  #contact {
+    scroll-margin-top: 72px;
   }
 
   .brand-logo {
