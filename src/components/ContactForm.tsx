@@ -5,7 +5,7 @@ import { SITE_CONFIG } from "@/data/site-config";
 
 export function ContactForm() {
   const [formStatus, setFormStatus] = useState(
-    "No information is stored on this server. Direct WhatsApp & Email transfer."
+    "No information is stored on this server. Direct Email transfer."
   );
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -89,7 +89,7 @@ export function ContactForm() {
         />
       </div>
       <button className="btn submit" type="submit">
-        <span>PREPARE ENQUIRY</span>
+        <span>SEND ENQUIRY</span>
         <svg
           width="16"
           height="16"
