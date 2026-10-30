@@ -674,6 +674,8 @@ section.about {
 /* Contact Us heading — Naveid Arabic DEMO */
 #contact .section-label {
   font-family: 'Naveid Arabic DEMO', serif;
+  margin-bottom: 20px;
+  display: block;
 }
 
 /* All other contact content — Times New Roman */
@@ -770,6 +772,7 @@ section.about {
     0 4px 15px rgba(0, 0, 0, 0.02);
   border: 1px solid rgba(41, 76, 54, 0.12);
   position: relative;
+  margin-top: 20px;
 }
 
 .contact-form h3 {
