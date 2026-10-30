@@ -100,6 +100,13 @@ header {
   font-weight: 600;
 }
 
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+}
+
 .links a:hover {
   color: #d2dfb7;
 }
@@ -361,6 +368,15 @@ section.about {
   text-transform: uppercase;
 }
 
+/* Reset browser h2 defaults when section-label is an h2 */
+h2.section-label,
+h2.wc-label {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
 .section h2 {
   font: 700 clamp(30px, 4vw, 46px)/1.17 Arial, Helvetica, sans-serif;
   margin: 15px 0 18px;
@@ -444,6 +460,7 @@ section.about {
   transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s, transform 0.25s;
   transform: translateZ(0);
   user-select: none;
+  min-height: 44px;
 }
 
 .wc-card:hover {
@@ -656,7 +673,7 @@ section.about {
 .feature span {
   font-size: 12px;
   line-height: 1.7;
-  color: #6b786d;
+  color: #555f58;
 }
 
 /* ─── Contact ─── */
@@ -895,7 +912,7 @@ section.about {
 
 .form-note {
   font-size: 12px !important;
-  color: #728274;
+  color: #4d5c50;
   margin-top: 16px;
   text-align: center;
   display: flex;

@@ -7,12 +7,12 @@ export function AboutSection() {
     <section className="section about" id="about">
       <div className="container about-layout">
         <div className="about-text">
-          <div
+          <h2
             className="section-label"
             style={{ color: "rgb(183, 120, 2)", fontSize: "1rem" }}
           >
             About Us
-          </div>
+          </h2>
           <p>
             <span
               style={{
@@ -86,9 +86,9 @@ export function ContactSection() {
     <section className="section" id="contact">
       <div className="container contact-layout">
         <div>
-          <div className="section-label" style={{ fontSize: "2.5rem" }}>
+          <h2 className="section-label" style={{ fontSize: "2.5rem" }}>
             Contact Us
-          </div>
+          </h2>
           <div className="contact-detail">
             <b>
               <svg

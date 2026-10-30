@@ -21,7 +21,7 @@ export function WoodCollectionSection() {
         {/* LEFT: header + card list */}
         <div className="wc-left">
           <div className="wc-header">
-            <div className="wc-label">Wood Collection</div>
+            <h2 className="wc-label">Wood Collection</h2>
             <p className="wc-desc">
               Explore our carefully sourced timber collection, built for lasting
               space.
