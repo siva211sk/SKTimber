@@ -956,34 +956,38 @@ footer a {
 /* ─── WhatsApp floating ─── */
 .floating-wa {
   position: fixed;
-  bottom: 22px;
-  right: 22px;
+  bottom: 24px;
+  right: 24px;
   z-index: 15;
-  width: 57px;
-  height: 57px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   background: #294c36;
   color: white;
   display: grid;
   place-items: center;
   box-shadow: 0 7px 25px #0003;
-  font-size: 26px;
   transition: transform 0.2s;
   transform: translateZ(0);
 }
 
+.floating-wa img {
+  width: 46px;
+  height: 46px;
+}
+
 .floating-wa:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* ─── Instagram floating ─── */
 .floating-insta {
   position: fixed;
-  bottom: 90px; /* 22px + 57px (WA) + 11px gap */
-  right: 22px;
+  bottom: 94px; /* 24px + 58px (WA) + 12px gap */
+  right: 24px;
   z-index: 15;
-  width: 57px;
-  height: 57px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
   color: white;
@@ -994,8 +998,13 @@ footer a {
   transform: translateZ(0);
 }
 
+.floating-insta img {
+  width: 44px;
+  height: 44px;
+}
+
 .floating-insta:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* ─── Mobile toggle ─── */
@@ -1061,6 +1070,32 @@ footer a {
 
   .nav-cta {
     display: none;
+  }
+
+  /* Floating buttons — tablet */
+  .floating-wa,
+  .floating-insta {
+    width: 62px;
+    height: 62px;
+    right: 18px;
+  }
+
+  .floating-wa {
+    bottom: 18px;
+  }
+
+  .floating-wa img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-insta {
+    bottom: 92px; /* 18px + 62px + 12px */
+  }
+
+  .floating-insta img {
+    width: 48px;
+    height: 48px;
   }
 
   /* About: stack text over image */
@@ -1263,12 +1298,29 @@ footer a {
   }
 
   /* ── WhatsApp ── */
+  .floating-wa,
+  .floating-insta {
+    width: 54px;
+    height: 54px;
+    right: 14px;
+  }
+
   .floating-wa {
-    width: 50px;
-    height: 50px;
-    font-size: 22px;
-    bottom: 16px;
-    right: 16px;
+    bottom: 14px;
+  }
+
+  .floating-wa img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-insta {
+    bottom: 80px; /* 14px + 54px + 12px */
+  }
+
+  .floating-insta img {
+    width: 42px;
+    height: 42px;
   }
 }
 

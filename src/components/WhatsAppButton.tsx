@@ -20,8 +20,8 @@ export function WhatsAppButton() {
       <Image
         src="/svg/whatsapp.svg"
         alt="WhatsApp"
-        width={32}
-        height={32}
+        width={58}
+        height={58}
       />
     </a>
   );

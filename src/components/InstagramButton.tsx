@@ -18,8 +18,8 @@ export function InstagramButton() {
       <Image
         src="/svg/instagram.svg"
         alt="Instagram"
-        width={28}
-        height={28}
+        width={56}
+        height={56}
         style={{ filter: "invert(1)" }}
       />
     </a>
