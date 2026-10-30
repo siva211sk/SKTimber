@@ -1,6 +1,8 @@
-# Siva Karthik Timber Depot
+# Sivakarthik Timber Depot
 
-A responsive, SEO-ready single-page timber supplier website built with Next.js App Router, TypeScript, Tailwind CSS and Lucide icons. Navigation scrolls to sections on the homepage, including product details and the contact form. Product details and business contact information are maintained in local TypeScript configuration; enquiries are prepared for WhatsApp and are not stored or sent by a backend.
+A responsive, SEO-ready single-page timber supplier website built with Next.js App Router and TypeScript. Navigation scrolls to sections on the homepage, including the wood collection and the contact form. Business contact information is maintained in a local TypeScript configuration file; enquiries are prepared for WhatsApp and are not stored or sent by a backend.
+
+**Live site:** [https://www.sktimbers.com](https://www.sktimbers.com)
 
 ## Requirements
 
@@ -18,35 +20,46 @@ Open [http://localhost:3000](http://localhost:3000). To verify the production ve
 
 ```bash
 npm run lint
-npm run typecheck
 npm run build
 npm start
 ```
 
-## Configure before launch
+## Configure
 
-Update `src/data/site-config.ts`:
+All business details live in `src/data/site-config.ts`:
 
-- `businessName` and `shortName` if the displayed business name needs changing.
-- `siteUrl` to the deployed canonical website origin; it currently uses `https://www.example.com`.
-- The phone display value and `phoneHref` in `tel:+...` format.
-- The WhatsApp number in international digits (country code included, no `+`), email display value and `emailHref` in `mailto:...` format, and the verified business address.
+- `businessName` and `shortName` — displayed business name.
+- `siteUrl` — canonical website origin. Currently set to `https://www.sktimbers.com`.
+- Phone numbers and `phoneHref` in `tel:...` format.
+- `whatsappNumber` in international digits (country code included, no `+`).
+- `email` and `emailHref` in `mailto:...` format. Currently set to `info@sktimbers.com`.
+- `address` — verified business address shown in the contact section.
 - Social profile URLs if the business uses them.
 
-The contact form validates the visitor's name and phone number and opens a prefilled WhatsApp message. Set the WhatsApp number before launch. Until configured, the floating enquiry link leads to the contact form and form submissions explain that WhatsApp is not configured. No form data is transmitted to or stored by this site.
+The contact form validates the visitor's name and phone number and opens a prefilled WhatsApp message. No form data is transmitted to or stored by this site.
 
-## Products and images
+## Wood collection
 
-`src/data/products.ts` is the source of truth for the collection and product detail sections on the homepage. Teakwood is the only confirmed product currently listed; add other products only after confirming their details. Product pricing, stock and certifications are intentionally not claimed. Previous `/contact` and `/wood-collection` URLs redirect to the matching homepage sections.
+The five wood types (Palash, Teak, Neem, Jamun, Babuca) are defined directly in `src/components/home/WoodCollection.tsx`. Images are served from `public/images/` and automatically converted to AVIF/WebP by Next.js image optimisation.
 
-The local images in `public/images/` are initial visual placeholders sourced from Unsplash:
+## Images
 
-- `forest-canopy.jpg` — homepage and social sharing.
-- `timber-detail.jpg` — teakwood product imagery.
-- `architectural-interior.jpg` — about section.
+All images are in `public/images/`:
 
-Replace these with properly licensed business photography at the same paths (or update the image paths in the relevant components and product data). Use descriptive alt text for any replacement.
+- `homeBackground.jpg` — hero background and social sharing image.
+- `about.png` — about section.
+- `logo.jpeg` — header logo.
+- `ballarsha.jpeg` — Palash wood.
+- `teak.jpeg` — Teak wood.
+- `neam.jpeg` — Neem wood.
+- `jamun.jpeg` — Jamun wood.
+- `babuca.jpeg` — Babuca wood.
+- `woodcollectionbackground.jpeg` — wood collection section background.
+
+Replace any image at the same path and Next.js will automatically serve the optimised version on next build.
 
 ## Deployment
 
-Deploy on a Node.js-compatible host that supports Next.js, such as Vercel. Set the project root to this repository, install dependencies with `npm install`, and use `npm run build` as the build command. No database, CMS, environment secrets or external image host are required.
+Deployed on Vercel. Set the project root to this repository, install with `npm install`, and build with `npm run build`. No database, CMS, environment secrets or external image host are required.
+
+Previous `/contact` and `/wood-collection` URLs redirect to the matching homepage sections via `next.config.ts`.

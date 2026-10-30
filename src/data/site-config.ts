@@ -1,15 +1,15 @@
 export const SITE_CONFIG = {
   businessName: "Sivakarthik Timber Depot",
   shortName: "SK Timber",
-  siteUrl: "https://www.example.com",
+  siteUrl: "https://www.sktimbers.com",
   description:
     "Sivakarthik Timber Depot supplies premium teakwood for builders, architects and carpenters. Enquire for timber requirements.",
   contact: {
     phoneDisplay: "+91 88973 37944",
     phoneHref: "tel:8897337944",
     whatsappNumber: "918897337944",
-    email: "sk987siva@gmail.com",
-    emailHref: "mailto:sk987siva@gmail.com",
+    email: "info@sktimbers.com",
+    emailHref: "mailto:info@sktimbers.com",
     address: "S.No. 185, Renigunta Rd, Korramenugunta, Tirupati, Andhra Pradesh - 517501",
     contacts: [
       { name: "M. Siva Karthik", phone: "+91 88973 37944", phoneHref: "tel:8897337944" },
