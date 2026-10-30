@@ -897,6 +897,36 @@ section.about {
   gap: 6px;
 }
 
+.form-note--success {
+  color: #2a6b3c;
+  background: #f0faf4;
+  border: 1px solid #b2dfc3;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.form-note--error {
+  color: #9b2020;
+  background: #fff5f5;
+  border: 1px solid #f5c6c6;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+/* Dim form while sending */
+.contact-form input:disabled,
+.contact-form textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+
 /* ─── Footer ─── */
 footer {
   background: #f3f5f3;
