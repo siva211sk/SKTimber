@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SITE_CONFIG } from "@/data/site-config";
 
 export function WhatsAppButton() {
@@ -16,7 +17,12 @@ export function WhatsAppButton() {
       target={digits ? "_blank" : undefined}
       rel={digits ? "noopener noreferrer" : undefined}
     >
-      ✆
+      <Image
+        src="/svg/whatsapp.svg"
+        alt="WhatsApp"
+        width={32}
+        height={32}
+      />
     </a>
   );
 }

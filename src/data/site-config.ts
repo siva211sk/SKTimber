@@ -20,7 +20,7 @@ export const SITE_CONFIG = {
     mapsLink: "https://maps.app.goo.gl/FMBZQgrfvkGp1hta7",
   },
   socialLinks: {
-    instagram: "",
+    instagram: "https://www.instagram.com/siva_karthik_timberdepot?rpxt=ODZzcDJqdHR2djlv",
     facebook: "",
     linkedin: "",
   },

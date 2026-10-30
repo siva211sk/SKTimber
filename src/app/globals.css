@@ -976,6 +976,28 @@ footer a {
   transform: scale(1.05);
 }
 
+/* ─── Instagram floating ─── */
+.floating-insta {
+  position: fixed;
+  bottom: 90px; /* 22px + 57px (WA) + 11px gap */
+  right: 22px;
+  z-index: 15;
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  color: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 7px 25px #0003;
+  transition: transform 0.2s;
+  transform: translateZ(0);
+}
+
+.floating-insta:hover {
+  transform: scale(1.05);
+}
+
 /* ─── Mobile toggle ─── */
 .mobile-toggle {
   display: none;
